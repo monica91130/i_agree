@@ -1,0 +1,102 @@
+<section class="category-main-image-section">
+	<%= attachment_image_tag @category, :image, class:"category-main-image" %>
+	<div class="container category-main-image-box">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<p class="category-name"><%= @category.name %></p>
+				<p class="category-intro"><%= @category.intro %></p>
+			</div>
+		</div>
+		<% if user_signed_in? %>
+			<% if CategoryFollow.exists?(user_id: current_user.id, category_id: @category.id) %>
+				<%= link_to category_category_follow_path(@category), method: :delete do %>
+			      <div class="category-button-follow">
+			      	<p class="button-text">フォロー中</p>
+			      </div>
+			    <% end %>
+				<p class="detale" style="font-weight: lighter;"><%= CategoryFollow.where(category_id:@category.id).count %>人がフォローしています</p>
+			<% else %>
+				<%= link_to category_category_follows_path(@category), method: :post do %>
+			      <div class="category-button">
+					<p class="button-text">このカテゴリーをフォローする</p>
+			      </div>
+		    	<% end %>
+				<p class="detale" style="font-weight: lighter;"><%= CategoryFollow.where(category_id:@category.id).count %>人がフォローしています</p>
+			<% end %>
+		<% else %>
+			<%= link_to new_user_session_path do %>
+				<div class="category-button">
+					<p class="button-text">このカテゴリーをフォローする</p>
+			    </div>
+		    <% end %>
+			<p class="detale" style="font-weight: lighter;"><%= CategoryFollow.where(category_id:@category.id).count %>人がフォローしています</p>
+		<% end %>
+	</div>
+</section>
+
+<section class="post-index">
+	<div class="post-contents">
+		<% @posts.each do |post| %>
+		<% user = User.find(post.user_id) %>
+		<% category = Category.find(post.category_id) %>
+		<div class="post-card">
+			<div class="category-tag-boxz">
+				<%= link_to category_path(category.id) do %>
+		  			<button type="button" class="category-tag"><%= category.name %></button>
+					<% end %>
+		    </div>
+			<div class="card-contents">
+		    	<div class="card-profile-img">
+					<%= link_to user_path(user.id) do %>
+						<%= attachment_image_tag user, :image, fallback: "no_image.jpg",:size => '83x83', class: "prolife-img img-circle" %>
+					<% end %>
+				</div>
+				<div class="card-text">
+					<div class="card-user-info">
+						<p class="card-user-name"><strong><%= user.name %></strong></p>
+						<p class="detale"><%= user.age %></p>
+						<p class="detale"><%= user.gender_i18n %></p>
+						<p class="detale"><%= user.profession %></p>
+					</div>
+					<p class="post-body"><%= post.body %></p>
+				</div>
+			</div>
+			<div class="agree">
+				<% if user_signed_in? %>
+					<% if user == current_user %>
+						<%= link_to post_path(post), method: :delete, data: { confirm: '削除しますか？' } do %>
+							<div class="delete-btn"><p class="button-text">削除<p></div>
+						<% end %>
+						<p class="detale" style="font-weight: lighter;"><%= Agree.where(post_id:post.id).count %>人がAgreeしています</p>
+					<% else %>
+						<%# if post.agreed_by?(current_user) %>
+						<% if Agree.exists?(user_id: current_user.id, post_id: post.id) %>
+							<%= link_to post_agree_path(post.id), method: :delete do %>
+								<div class="agree-btn-active"><p class="button-text">I agree!</p></div>
+							<% end %>
+							<p class="detale" style="font-weight: lighter;"><%= Agree.where(post_id:post.id).count %>人がAgreeしています</p>
+						<% else %>
+							<%= link_to post_agrees_path(post.id), method: :post do %>
+								<div class="agree-btn"><p class="button-text">agree?</p></div>
+							<% end %>
+							<p class="detale" style="font-weight: lighter;"><%= Agree.where(post_id:post.id).count %>人がAgreeしています</i></p>
+						<% end %>
+					<% end %>
+				<% else %>
+					<%= link_to new_user_session_path do %>
+						<div class="agree-btn"><p class="button-text">agree?</p></div>
+					<% end %>
+					<p class="detale" style="font-weight: lighter;"><%= Agree.where(post_id:post.id).count %>人がAgreeしています</p>
+				<% end %>
+					</div>
+			<div class="date-time">
+				<i class="far fa-clock" style="color: #26A69A;"></i>
+				<%= post.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<div class="twitter-categoryshow">
+		<a class="twitter-timeline" data-height="1500" data-theme="light" data-link-color="#19CF86" href="https://twitter.com/nikkei?ref_src=twsrc%5Etfw">Tweets by nikkei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+</section>

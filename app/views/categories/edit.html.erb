@@ -1,0 +1,26 @@
+<div class="band">  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+        <p>Category Edit</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-container">
+	<div class="form-box">
+		<h2>Category Edit</h2>
+		<%= bootstrap_form_for(@category, layout: :horizontal, control_col: "col-sm-12") do |f| %>
+		<p><font size="4">カテゴリー名</font></p>
+			<%= f.text_field :name, hide_label: true %>
+		<p><font size="4">説明文</font></p>
+			<%= f.text_area :intro, hide_label: true %>
+		<div class="new-image">
+			<p><font size="4">イメージ画像</font></p>
+			<%= f.attachment_field :image %>
+		</div><br>
+			<%= f.submit "投稿", :class => "submit-btn"%>
+			<%= link_to '戻る', :back, :class => "back-btn" %>
+		<% end %>
+	</div>
+</div>

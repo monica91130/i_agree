@@ -1,0 +1,20 @@
+<div class="form-container">
+  <div class="form-box">
+    <h2>Log in</h2>
+    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", hide_label: true, placeholder: "＠" %>
+        <%= f.password_field :password, autocomplete: "off", hide_label: true, placeholder: "＊" %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "Log in", :class => "submit-btn" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>

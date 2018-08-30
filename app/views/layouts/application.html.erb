@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>I agree.</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <!-- <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" /> -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+  </head>
+
+  <header>
+    <div class="header-container">
+      <%= link_to root_path do %>
+        <p class="header-title">I agree.</p>
+      <% end %>
+      <div>
+      <% if notice %>
+       <p id="notice"><%= notice %> <i class="fas fa-check"></i></p>
+      <% end %>
+    </div>
+      <div class="header-box">
+        <%= form_tag('/posts', method: :get) do %>
+          <div class="input-group ">
+            <%= text_field_tag :search, '', :class => "form-control search", placeholder: 'キーワード検索' %>
+            <span class="input-group-btn">
+              <%= submit_tag "Search", class:"btn btn-default search"%>
+            </span>
+          </div>
+        <% end %>
+
+<!--         <div class="input-group ">
+          <input type="text" class="form-control search">
+          <span class="input-group-btn">
+            <button class="btn btn-default search" type="submit">
+              <i class='glyphicon glyphicon-search'></i>
+            </button>
+          </span>
+        </div>  -->
+
+
+
+
+        <div class="header-icon-box">
+          <% if user_signed_in? %>
+            <%= link_to user_path(current_user) do %>
+              <%= attachment_image_tag current_user, :image, :fill,30,30, format: 'jpeg', class: "h-user-img img-circle", fallback: "no_image.jpeg" %>
+            <% end %>
+            <%= link_to '', posts_path, class: "header-icon i fas fa-search" %>
+            <%= link_to '', new_post_path, class: "header-icon i fas fa-pencil-alt" %>
+            <%= link_to '', destroy_user_session_path, method: :delete, class: "header-icon i fas fa-sign-out-alt" %>
+            <% else %>
+            <%= link_to '', new_user_session_path, class: "header-icon fas fa-sign-in-alt" %>
+            <%= link_to '', new_user_registration_path, class: "header-icon fas fa-user-plus" %>
+          <% end %>
+        </div>
+      </div>
+
+  </header>
+
+  <body>
+    <%= yield %>
+  </body>
+
+  <footer>
+    <div class="fotter-contents">
+      <h4 class=fotter-title>I agree.</h4>
+      <div class="fotter-category">
+        <p><strong>カテゴリー</strong></p>
+        <% categories = Category.all %>
+        <% categories.each do |category | %>
+          <%= link_to category_path(category) do %>
+            <p><%= category.name %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+      <div class="fotter-mypage">
+        <p><strong>マイページ</strong></p>
+        <%= link_to user_path(current_user) do %>
+          <p>ホーム</p>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <p>ログアウト</p>
+        <% end %>
+        <%= link_to user_path(current_user), method: :delete, data: {confirm: '退会してよろしいですか?'} do %>
+          <p>退会</p>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </footer>
+</html>
+
+

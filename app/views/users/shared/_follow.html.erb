@@ -1,0 +1,48 @@
+<div class="follow">
+	<% @category_follows.each do |category_follow| %>
+	<% category = Category.find(category_follow.category_id) %>
+		<div class="card follow-category-card">
+			<%= attachment_image_tag category, :image, class: "follow-card-category-img" %>
+			<%= link_to category_path(category.id) do %>
+				<div class="mask follow-card">
+		            <div class="category-caption">
+		            	<p class="category-name-index"><%= category.name %></p>
+		            </div>
+	        	</div>
+			<% end %>
+			<% if @user == current_user %>
+				<%= link_to category_category_follow_path(category),method: :delete, data: { confirm: 'フォローを解除しますか？' } do %>
+	            	<div class="following-button-category-card">
+			      		<p class="button-text">フォロー中</p>
+			      	</div>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<div class="follow">
+	<% @user_follows.each do |user_follow| %>
+		<div class="card follow-user-card">
+			<%= link_to user_path(user_follow),:style=>"color: #616161;" do %>
+				<div class="follow-card-plofile">
+					<%= attachment_image_tag user_follow, :image, :size => '83x83', class: "follow-card-plofile-img img-circle" %>
+					<p class="follow-card-user-name"><%= user_follow.name %></p>
+					<div class="user-info follow-card-info">
+						<p class="detale"><%= user_follow.age %></p>
+						<p class="detale"><%= user_follow.gender_i18n %></p>
+						<p class="detale"><%= user_follow.profession %></p>
+					</div>
+					<p class="detale">最終投稿</p>
+					<p class="detale"><%= user_follow.posts.order(:updated_at).last.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></p>
+				</div>
+			<% end %>
+			<% if @user == current_user %>
+				<%= link_to user_follow_destroy_path(@user, user_follow),data: { confirm: 'フォローを解除しますか？' } do %>
+					<div class="following-button-user-card">
+						<p class="button-text">フォロー中</p>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

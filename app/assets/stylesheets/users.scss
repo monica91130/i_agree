@@ -1,0 +1,169 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*UserShowページ*/
+
+.mypage {
+	padding: 30px 10px;
+	display: flex;
+}
+.profile {
+	/*background-color: #c93a40;*/
+	text-align: center;
+	margin-left: 10px;
+	min-width: 250px;
+	width: 20%;
+}
+.profile-card {
+	background-color: white;
+	padding: 30px 10px;
+	/*background-color: #de9610;*/
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+	margin-right: 10px;
+}
+.prolife-img {
+	object-fit: cover;
+}
+.user-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items:center;
+}
+
+.post {
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+.scroll-menu {
+	overflow: auto;
+	white-space: nowrap;
+}
+.menu {
+	display: flex;
+}
+.menu-box {
+	background-color: white;
+	flex: 1;
+	/*float: left;*/
+	/*width: 20%;*/
+	/*flex: 1;*/
+	text-align: center;
+	height: 64px;
+	/*background-color: #65ace4;*/
+}
+.menu-box:hover {
+	border-bottom: solid 4px #26A69A;
+	color: #26A69A;
+}
+.menu-box p {
+	line-height: 64px;
+	margin: 0 5px;
+	font-size: 14px;
+	font-weight: 400;
+}
+#profile-menu {
+		display: none;
+	}
+.new-post {
+	text-align: center;
+	height: 64px;
+	background-color: rgba(38,166,154,0.12);
+}
+.new-post p {
+	line-height: 64px;
+}
+.new-post:hover {
+	border-bottom: solid 4px #26A69A;
+	color: #26A69A;
+}
+.mypage-contents{
+	display:none;
+}
+.menu-box.active{
+	background-color: rgba(38,166,154,0.12);
+	/*border-bottom: solid 4px #26A69A;*/
+	color: #26A69A;
+}
+.mypage-contents.active{
+	display:block;
+}
+.usershow-twitter{
+	width: 280px;
+	margin: 0 10px;
+}
+.posts {
+	flex: 1;
+}
+
+/*UserShowFollowページ*/
+.follow {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	text-align: center;
+}
+.follow-category-card {
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+	background-color: rgba(38,166,154,0.12);
+	min-width: 240px;
+	margin: 3px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+.follow-category-card .mask {
+	color: white;
+	text-align: center;
+ 	display: flex;
+	align-items: center;
+ 	flex-direction: column;
+  	justify-content: center;
+	width:			100%;
+	height:			100%;
+	position:		absolute;	/* 絶対位置指定 */
+	top:			0;
+	left:			0;
+	opacity:		1;
+}
+.follow-card-category-img {
+	filter: brightness(70%);
+	height: 300px;
+  	object-fit: cover;
+  	width: 100%;
+  	margin: 0 auto;
+}
+.follow-user-card {
+	background-color: white;
+	flex: 1;
+	width: 240px;
+	height: 300px;
+	margin: 3px;
+	padding: 30px 10px;
+	margin-bottom: 5px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	flex-direction: column;
+	/*max-width: 247px;*/
+	min-width: 220px;
+}
+.follow-card-user-name {
+	font-size: 28px;
+	margin: 5px 0;
+}
+.follow-card-info {
+	flex: 1;
+}
+.follow-card-plofile {
+	flex: 1;
+}
+
+
+
+
+
+
+
+

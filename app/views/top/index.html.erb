@@ -1,0 +1,63 @@
+
+<section class="main-visual">
+  <div class="main-title">
+    <h1>I agree.</h1>
+    <p>日常で抱える様々な不満・不安をぶちまけるWebサイト。</p>
+  </div>
+  <div id="animation" class="about">
+      <div id="animation" class="about-contents">
+          <p>
+              あなたは今、漠然とした不安や不満を抱えていませんか。<br><br>
+              それをしっかり見つめて、自分の言葉で発信していくことは、とても大切なことです。<br><br>
+              ここではあなたを否定する人は誰もいません。<br><br>
+              ここにいるのは、ただあなたの意見に賛同してくれる人だけ。<br><br>
+              あなたの不安は何ですか？<br>
+          </p>
+          <%= link_to new_user_registration_path do %>
+              <button type="button" class="btn btn-default">Get started</button>
+          <% end %>
+      </div>
+  </div>
+</section>
+<section class="top-category">
+  <div class="container category" >
+    <h2>Category</h2>
+    <div class="row">
+      <% @categories.each_with_index do |category, i| %>
+      <% if i == 0 %>
+        <%= link_to category_path(category) do %>
+          <div class="col-lg-12 category-box">
+            <%= attachment_image_tag category, :image, :height => '400', class:"category-img" %>
+            <div class="mask">
+              <div class="category-caption">
+                <p class="category-name-index"><%= category.name %></p>
+                <p class="category-posts">(投稿数<strong><%= Post.where(category_id:category.id).count %></strong>件)</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% elsif i == 1 || i == 2 %>
+        <%= link_to category_path(category) do %>
+          <div class="col-lg-6 category-box">
+            <%= attachment_image_tag category, :image, :height => '400', class:"category-img" %>
+            <div class="mask">
+              <p class="category-name-index"><%= category.name %></p>
+              <p class="category-posts">(投稿数<strong><%= Post.where(category_id:category.id).count %></strong>件)</p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to category_path(category) do %>
+          <div class="col-lg-4 category-box">
+            <%= attachment_image_tag category, :image, :height => '300', class:"category-img" %>
+            <div class="mask">
+              <p class="category-name-index"><%= category.name %></p>
+              <p class="category-posts">(投稿数<strong><%= Post.where(category_id:category.id).count %></strong>件)</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

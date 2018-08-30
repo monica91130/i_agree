@@ -1,0 +1,107 @@
+<section class="mypage">
+	<div class="profile">
+		<div class="profile-card">
+			<%= attachment_image_tag @user, :image, fallback: "no_image.jpeg",:size => '150x150', class: "prolife-img img-circle" %>
+			<h4><%= @user.name %></h4>
+			<div class="user-info">
+				<p><%= @user.age %></p>
+				<p><%= @user.gender_i18n %></p>
+			</div>
+			<p><%= @user.profession %></p>
+			<p>投稿<strong><%= Post.where(user_id: @user.id).count %></strong>件</p>
+			<p>登録カテゴリ<strong><%= CategoryFollow.where(user_id:@user.id).count %></strong>件</p>
+			<% if category_follow = present? %>
+				<% @category_follows.each do |category_follow| %>
+				<% category = Category.find(category_follow.category_id) %>
+					<div class="category-tag-box">
+						<%= link_to category_path(category.id) do %>
+	              			<div type="button" class="category-tag"><%= category.name %></div>
+	          			<% end %>
+	          		</div>
+          		<% end %>
+			<% end %>
+			<% if user_signed_in? %>
+				<% if @user == current_user %>
+					<%= link_to edit_user_path(current_user) do %>
+		            	<div class="submit-btn profile-button"><p class="button-text">編集する</p></div>
+		            <% end %>
+	        	<% else %>
+					<% if @user.followed_by? current_user %>
+						<%= link_to user_follow_destroy_path(@user) do %>
+						    <div class="profile-card-following-button">
+						      	<p class="button-text">フォロー中</p>
+						    </div>
+		    			<% end %>
+						<p class="detale" style="font-weight: lighter;"><%= @user.followers_count %>人がフォローしています</p>
+					<% else %>
+						<%= link_to user_follow_path(@user) do %>
+		            		<div class="submit-btn follow-button"><p class="button-text">このユーザーを<br>フォローする<p></div>
+	    				<% end %>
+						<p class="detale" style="font-weight: lighter;"><%= @user.followers_count %>人がフォローしています</p>
+					<% end %>
+				<% end %>
+			<% else %>
+				<%= link_to new_user_session_path do %>
+					<div class="category-button">
+	            		<div class="submit-btn profile-button"><p class="button-text">このユーザーを<br>フォローする<p></div>
+				    </div>
+			    <% end %>
+					<p class="detale" style="font-weight: lighter;"><%= @user.followers_count %>人がフォローしています</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="posts">
+		<div class="scroll-menu">
+			<div id="menu" class="menu clearfix">
+				<% if @user == current_user %>
+					<div id="profile-menu" class="menu-box">
+						<%= attachment_image_tag @user, :image, :fill,40,40, format: 'jpeg', class: "menu-user-img img-circle", fallback: "no_image.jpeg" %>
+						<p class="manu-user-name"><%= @user.name %></p>
+					</div>
+					<div class="menu-box active"><p>TOP</p></div>
+					<div class="menu-box"><p>投稿(<%= Post.where(user_id: @user.id).count %>)</p></div>
+				<% else %>
+					<div id="profile-menu" class="menu-box"><p>プロフィール</p></div>
+					<div class="menu-box active"><p>投稿(<%= Post.where(user_id: @user.id).count %>)</p></div>
+				<% end %>
+					<div class="menu-box"><p>agree(<%= @agrees.count %>)</p></div>
+					<div class="menu-box"><p>フォロー(<%= @category_follows.count + @user.follow_count %>)</p></div>
+					<div class="menu-box"><p>フォロワー(<%= @user.followers_count %>)</p></div>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="new-post">
+				<%= link_to new_post_path, :style=>"color: #616161;" do %>
+					<p>投稿する<i class="fas fa-pencil-alt"></i></p>
+				<% end %>
+			</div>
+			<div class="mypage-area">
+				<% if @user == current_user %>
+					<div id="profile" class="mypage-contents"><%= render 'users/shared/profile' %></div>
+					<div id="top" class="mypage-contents active"><%= render 'users/shared/top' %></div>
+					<div id="post" class="mypage-contents"><%= render 'users/shared/post' %></div>
+				<% else %>
+					<div id="profile" class="mypage-contents"><%= render 'users/shared/profile' %></div>
+					<div id="post" class="mypage-contents active"><%= render 'users/shared/post' %></div>
+				<% end %>
+				<div id="agree" class="mypage-contents"><%= render 'users/shared/agree' %></div>
+				<div id="follow" class="mypage-contents"><%= render 'users/shared/follow' %></div>
+				<div id="follower" class="mypage-contents"><%= render 'users/shared/follower' %></div>
+			</div>
+		</div>
+	</div>
+	<div class="usershow-twitter">
+		<a class="twitter-timeline" data-height="1500" href="https://twitter.com/nikkei?ref_src=twsrc%5Etfw">Tweets by nikkei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+</section>
+
+<script type="text/javascript" charset="utf-8" >
+	$(".menu-box").on("click",function(){
+		var $th = $(this).index();
+		$(".menu-box").removeClass("active");
+		$(".mypage-contents").removeClass("active");
+		$(this).addClass("active");
+		$(".mypage-contents").eq($th).addClass("active");
+		// $( '#menu' ).menu( { active: 1 } );
+	});
+</script>

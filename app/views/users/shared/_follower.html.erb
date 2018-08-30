@@ -1,0 +1,34 @@
+<div class="follow">
+	<% @user_followers.each do |user_follower| %>
+		<div class="card follow-user-card">
+			<%= link_to user_path(user_follower),:style=>"color: #616161;" do %>
+				<div class="follow-card-plofile">
+					<%= attachment_image_tag user_follower, :image, :size => '83x83', class: "follow-card-plofile-img img-circle" %>
+				</div>
+				<p class="follow-card-user-name"><%= user_follower.name %></p>
+				<div class="user-info follow-card-info">
+					<p class="detale"><%= user_follower.age %></p>
+					<p class="detale"><%= user_follower.gender_i18n %></p>
+					<p class="detale"><%= user_follower.profession %></p>
+				</div>
+					<p class="detale">最終投稿</p>
+					<p class="detale"><%= user_follower.posts.order(:updated_at).last.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></p>
+				<% if @user == current_user %>
+					<% if current_user.following? user_follower %>
+						<%= link_to user_follow_destroy_path(user_follower,current_user),data: { confirm: 'フォローを解除しますか？' } do %>
+							<div class="following-button-user-card">
+								<p class="button-text">フォロー中</p>
+							</div>
+						<% end %>
+					<% else %>
+						<%= link_to user_follow_destroy_path(user_follower,current_user),data: { confirm: 'フォロワーを削除しますか？' } do %>
+							<div class="following-button-user-card">
+								<p class="button-text">フォロワー削除</p>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

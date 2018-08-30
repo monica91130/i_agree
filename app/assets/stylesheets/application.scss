@@ -1,0 +1,531 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ *= require rails_bootstrap_forms
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+ @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+body {
+	/*font-family: "Rounded Mplus 1c";*/
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    color: #616161;
+	font-weight:300;
+	background-color: #F5F5F5;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+*, *::after, *::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.fadeInDown {
+ -ms-animation-fill-mode:both;
+ animation-fill-mode:both;
+ -ms-animation-duration:1s;
+ animation-duration:1s;
+ animation-name: fadeInDown;
+ visibility: visible !important;
+}
+@-webkit-keyframes fadeInDown {
+ 0% { opacity: 0; -webkit-transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+@keyframes fadeInDown {
+ 0% { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
+}
+
+
+h1 {
+	padding-bottom: 30px;
+	font-size: 64px;
+	font-family: 'Avenir', serif;
+	font-weight:400;
+	letter-spacing: 12px;
+
+}
+h2 {
+	font-family: 'Avenir', serif;
+	font-weight:400;
+	letter-spacing: 6px;
+
+}
+h2::after {
+	content: "";
+	display: block;
+	height: 1px;
+	/*width:110px;*/
+	background-color: #616161;
+	margin:0 auto;
+	margin-top: 10px;
+	margin-bottom: 70px;
+}
+h4 {
+	font-family: 'Avenir', serif;
+	font-weight:400;
+	font-size: 28px;
+	letter-spacing: 5px;
+	margin: 20px 0;
+
+}
+
+h5 {
+	font-weight:400;
+	font-size: 15px;
+	padding: 20px 0;
+}
+p {
+	font-size: 16px;
+	letter-spacing: 3px;
+}
+header {
+	background-color: white;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+	/*background: linear-gradient(to right, #26a69a, #a8e4df);*/
+}
+.header-container {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content:space-between;
+}
+.header-title {
+	line-height: 50px;
+	margin-bottom: 0px;
+	font-family: 'Avenir', serif;
+    color: #616161;
+}
+#notice {
+	line-height: 50px;
+	/*margin: 0 auto;*/
+	text-align: center;
+	padding:0px;
+	font-weight:400;
+	color:#26A69A;
+	/*width: 500px;*/
+	font-size: 14px;
+	line-height: 50px;
+	margin: 0 auto;
+}
+.header-box {
+	display: flex;
+}
+.header-icon-box {
+	display: flex;
+}
+.header-icon {
+	flex:1;
+	margin: 0 10px;
+	line-height: 50px;
+	font-size: 18px;
+	/*float: left;*/
+    color: #616161;
+}
+.fa-search {
+	display: none;
+}
+.input-group {
+	/*width: 20%;*/
+	max-width: 400px;
+	/*float: left;*/
+	margin: 8px 10px;
+	flex: 1;
+}
+section .input-group {
+	opacity: 0;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.search {
+	border-radius: 40px;
+	/*color: #26a69a;*/
+	/*border-color: #26a69a;*/
+}
+.h-user-img {
+	width: 30px;
+	height: 30px;
+	background-color: yellow;
+	float: left;
+	margin: 10px 10px;
+  	object-fit: cover;
+}
+
+.band {
+	height: 64px;
+	background: linear-gradient(to right, #26a69a, #a8e4df);
+	color: white;
+}
+.band p {
+	line-height: 64px;
+	font-weight:200;
+	letter-spacing: 5px;
+	font-size: 28px;
+}
+footer {
+	padding: 90px 20px;
+	font-weight:400;
+	background-color: white;
+
+}
+.fotter-contents {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.fotter-contents h4 {
+	text-align: center;
+	margin:0;
+}
+.fotter-contents h5 {
+	margin: 0;
+}
+.fotter-title {
+	text-align: center;
+}
+footer p{
+	font-weight:400;
+	font-size: 14px;
+	color: #616161;
+	/*text-align: center;*/
+}
+.form-label {
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    color: #616161;
+	font-weight:lighter;
+	font-size: 15px;
+	letter-spacing: 3px;
+	padding-bottom: 10px;
+}
+.form-container {
+	padding: 90px 0;
+}
+.form-box {
+	background-color: white;
+	text-align: center;
+	width: auto;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+	margin: 90px 0;
+	padding: 50px 90px;
+	width: 600px;
+	margin: 0 auto;
+	min-width :300px;
+}
+.new-image {
+	display: inline-block;
+	padding: 10px;
+}
+textarea {
+    resize: vertical;
+    min-height: 170px;
+}
+
+/*ボタン系*/
+
+.submit-btn {
+	margin: 0 auto;
+	display:inline-block;
+	font-size: 18px;
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    padding: 5px 0px;
+    border-radius: 40px;
+    background-color: white;
+    border-color: #26A69A;
+    width: 200px;
+    color: #26A69A;
+    letter-spacing: 5px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+	margin: 70px 0;
+}
+.submit-btn:hover {
+	margin: 0 auto;
+	display:inline-block;
+	font-size: 18px;
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    padding: 5px 0px;
+    border-radius: 40px;
+    background-color: #26A69A;
+    border-color: #26A69A;
+    width: 200px;
+    color: white;
+    letter-spacing: 5px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+	margin: 70px 0;
+}
+.back-btn {
+	margin: 0 auto;
+	display:block;
+	font-size: 18px;
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    padding: 5px 0px;
+    border-radius: 40px;
+    background-color: white;
+    /*border-color: #26A69A;*/
+    width: 200px;
+    color: #616161;
+    letter-spacing: 5px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+.back-btn:hover {
+    background-color: #616161;
+    color: white;
+}
+.back-btn .delete {
+	width: 150px;
+	font-size: 14px;
+}
+.delete-btn {
+	margin: 0 auto;
+	display:block;
+    padding: 5px 0px;
+    border-radius: 40px;
+    /*background-color: white;*/
+    /*border-color: #26A69A;*/
+    width: 150px;
+    color: #616161;
+    letter-spacing: 5px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+.delete-btn:hover {
+    background-color: #616161;
+    color: white;
+}
+
+
+.agree-btn {
+    padding: 5px 0px;
+	width: 150px;
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	font-weight:500;
+	margin: 0 auto;
+	display:inline-block;
+    border-radius: 40px;
+    background-color: white;
+    border-color: #26A69A;
+    color: #26A69A;
+    letter-spacing: 2px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+.agree-btn-active {
+    padding: 5px 0px;
+	width: 150px;
+    font-family: "Rounded Mplus 1c", "Mplus 1p",'Helvetica Neue','Helvetica','Arial', "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	font-weight:500;
+	margin: 0 auto;
+	display:inline-block;
+    border-radius: 40px;
+    background-color: #26A69A;
+    border-color: #26A69A;
+    color: white;
+    letter-spacing: 2px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+
+.category-tag-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.category-tag {
+	background-color: #7b9ad0;
+	color: white;
+	border-radius: 6px;
+	border: #FFA726;
+	padding: 3px 10px;
+	margin: 5px;
+}
+
+.follow-button {
+	margin: 50px  auto;
+}
+.follow-button:hover {
+	margin: 50px  auto;
+}
+.follow-user-card {
+	position: relative;
+}
+.following-button-user-card {
+	padding: 5px;
+    border-radius: 40px;
+    letter-spacing: 5px;
+    color: #FAFAFA;
+	background-color: #26A69A;
+	border: solid 1px #26A69A;
+	display: inline-block;
+	max-width: 175px;
+	margin-top: 10px;
+	height: 40px;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+  	right: 0;
+  	margin: auto;
+}
+.follow-card-category-img {
+	position: relative;
+}
+.following-button-category-card {
+	padding: 5px;
+    border-radius: 40px;
+    letter-spacing: 5px;
+    color: #FAFAFA;
+	background-color: #26A69A;
+	border: solid 1px #26A69A;
+	display: inline-block;
+	max-width: 175px;
+	margin-top: 10px;
+	height: 40px;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+  	right: 0;
+  	margin: auto;
+}
+.profile-card-following-button {
+	padding: 5px;
+    border-radius: 40px;
+    letter-spacing: 5px;
+    color: #FAFAFA;
+	background-color: #26A69A;
+	border: solid 1px #26A69A;
+	display: inline-block;
+	margin-top: 20px;
+}
+/*カテゴリーページのボタン*/
+.category-button {
+	padding: 5px 10px;
+    border-radius: 40px;
+    color: white;
+    letter-spacing: 5px;
+    border: solid 1px white;
+    margin-top: 20px;
+}
+.category-button:hover {
+	color: #FAFAFA;
+	background-color: #26A69A;
+	border: solid 1px #26A69A;
+}
+.category-button-follow {
+	padding: 5px 10px;
+    border-radius: 40px;
+    margin-top: 20px;
+    letter-spacing: 5px;
+    color: #FAFAFA;
+	background-color: #26A69A;
+	border: solid 1px #26A69A;
+	margin: 0 atuo;
+
+}
+.button-text {
+	font-size: 13px;
+	margin: 5px 10px;
+}
+.submit-btn.profile-button {
+	margin: 20px 0;
+	font-size: 14px;
+	width: 180px;
+}
+.submit-btn.profile-button:hover {
+	margin: 20px 0;
+	font-size: 14px;
+	width: 180px;
+}
+
+/*レスポンシブ*/
+@media screen and (max-width: 768px) {
+  	.twitter-categoryshow, .usershow-twitter, .profile{
+		display: none;
+		}
+	.menu {
+	display: block;
+	}
+	section.mypage {
+		padding: 10px;
+	}
+	.fotter-title {
+		width: 100%;
+		padding-bottom: 30px;
+		/*display: none;*/
+	}
+	header .input-group {
+		display: none;
+	}
+	.fa-search {
+		display: inline;
+	}
+	.form-box{
+		width: 100%;
+		background-color: #F5F5F5;
+	}
+	.form-container {
+		padding: 10px 0;
+	}
+	#notice {
+		display: none;
+	}
+	.profile-mobile {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		flex-wrap: wrap;
+		text-align: center;
+		margin: 10px;
+	}
+	.mypage {
+		flex-direction: column;
+	}
+	#profile-menu {
+		display: flex;
+		justify-content: center;
+	}
+	.menu-user-img{
+		width: 50px;
+		height: 50px;
+	  	object-fit: cover;
+	  	margin: 5px;
+	}
+	.manu-user-name {
+		font-weight:400;
+		font-size: 25px;
+		letter-spacing: 5px;
+	}
+	section .input-group {
+	opacity: 1;
+	}
+}
+
+
+
+
+
+

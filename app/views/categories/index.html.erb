@@ -1,0 +1,37 @@
+<div class="band">  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+        <p>Category Index</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>no.</th>
+            <th>image</th>
+            <th>name</th>
+            <th>intro</th>
+          </tr>
+        </thead>
+        <% @categories.each do |category| %>
+        <tbody>
+          <tr>
+            <td><%= category.id %></td>
+            <td><%= attachment_image_tag category, :image, size: '30x30', format: 'jpeg', class: "", fallback: "no_image.jpeg", alt: "No image" %></td>
+            <td><%= link_to category.name, category_path(category.id) %></td>
+            <td><%= category.intro %></td>
+            <td><%= link_to "編集", edit_category_path(category.id) %></td>
+            <td><%= link_to "削除", category_path(category.id),method: :delete,  data: { confirm: '削除してよろしいですか？' } %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

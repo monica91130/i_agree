@@ -1,0 +1,26 @@
+
+<div class="form-container">
+  <div class="form-box">
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <h2>Sign up</h2>
+    <%= f.text_field :name, autocomplete: "off", label: "サイト上の名前",label_class: "form-label" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", label: "メールアドレス",label_class: "form-label" %>
+    <%= f.password_field :password, autocomplete: "off", label: "パスワード",label_class: "form-label", placeholder:"半角英数字6文字以上" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", label: "パスワード確認",label_class: "form-label",placeholder:"半角英数字6文字以上" %>
+    <%#= f.select :gender, 男性: "male", 女性: "female", label: "自認する性",label_class: "form-label" %>
+
+    <%= f.select :gender, [["",""],["男性","male"],["女性","female"]], label: "自認する性",label_class: "form-label" %>
+    <%= f.select :age, [["",""],["〜10代","〜10代"],["20代","20代"],["30代","30代"],["40代","40代"],["50代","50代"],["60代","60代"],["70代〜","70代〜"]], label: "年代",label_class: "form-label" %>
+    <%= f.select :profession, [["",""],["会社員(正社員)","会社員(正社員)"],["会社員(契約社員)","会社員(契約社員)"],["公務員","公務員"],["自営業・自由業","自営業・自由業"],["会社役員・経営者","会社役員・経営者"],["パート・アルバイト","パート・アルバイト"],["学生","学生"],["専業主婦(夫)","専業主婦(夫)"],["無職","無職"]], label: "職業",label_class: "form-label" %>
+    <div class="new-image">
+      <p class="form-label">プロフィール画像</p>
+      <%= f.attachment_field :image %>
+    </div><br>
+    <div class="actions">
+      <%= f.submit "Sign up", :class => "submit-btn" %>
+    </div>
+    <%= render "users/shared/links" %>
+    <% end %>
+  </div>
+</div>
