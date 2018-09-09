@@ -16,15 +16,12 @@ class UsersController < ApplicationController
   	@user_follows = @user.all_following
   	@user_followers = @user.followers
   	@posts = Post.where(category_id: cf).or(Post.where(user_id: @user.id)).or(Post.where(user_id: @user_follows))
+  end
 
-  	# @posts = @user_posts|@category_posts
-
-  	# end
-
-  	# @category_posts = Post.where(category_id: @category.id).all
-  	# @posts = @user_posts | @category_posts
-  	# @agree = Agree.where(user_id: @user.id)
-  	# @agree_posts = Post.where()
+  def destroy
+  	user = User.find(params[:id])
+	user.destroy
+	redirect_to users_path
   end
 
   def follow_create

@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	belongs_to :category
 	# belongs_to :tag
-	has_many :user_follow, dependent: :destroy
+	has_many :user_follow
 	has_many :agrees, dependent: :destroy
 	has_many :users, through: :user_follows
 	has_many :users, through: :agrees

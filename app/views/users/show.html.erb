@@ -12,6 +12,7 @@
 			<p>登録カテゴリ<strong><%= CategoryFollow.where(user_id:@user.id).count %></strong>件</p>
 			<% if category_follow = present? %>
 				<% @category_follows.each do |category_follow| %>
+				<%# binding.pry %>
 				<% category = Category.find(category_follow.category_id) %>
 					<div class="category-tag-box">
 						<%= link_to category_path(category.id) do %>

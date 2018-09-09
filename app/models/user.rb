@@ -6,11 +6,11 @@ class User < ApplicationRecord
   
   attachment :image
 
-	has_many :posts
-	has_many :agrees
-	has_many :reqests
-	has_many :user_follows
-	has_many :category_follows
+	has_many :posts, dependent: :destroy
+	has_many :agrees, dependent: :destroy
+	has_many :reqests, dependent: :destroy
+	has_many :user_follows, dependent: :destroy
+	has_many :category_follows, dependent: :destroy
 	has_many :categories, through: :category_follows
 	has_many :posts, through: :user_follows
 	has_many :posts, through: :agrees

@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
 	# has_many :tags
-	has_many :posts
+	has_many :posts, dependent: :destroy
 	# has_many :category_follows
 	# has_many :users, through: :category_follows
 	attachment :image
